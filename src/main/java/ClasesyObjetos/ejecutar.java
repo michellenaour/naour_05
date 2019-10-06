@@ -24,12 +24,12 @@ public class ejecutar {
     static Append_To_File append_to_file = new Append_To_File();
     static Leer_archivo_JSON leer_archivo_json = new Leer_archivo_JSON();
 
-    public static void main(String[] args) throws IOException, ParseException {
+    public static void main(String[] args)  {
         Crear_arreglo_Zapatillas();
         mostrar_zapatillas();
     }
 
-    public static void Crear_arreglo_Zapatillas() throws IOException, ParseException {
+    public static void Crear_arreglo_Zapatillas()  {
         Zapatillas = leer_archivo_json.leer_archivo_json();
         Zapatilla zapatillaNueva=append_to_file.Agregar_nueva_zapatilla_al_archivo();
         Zapatillas.add(7,zapatillaNueva);
