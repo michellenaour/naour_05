@@ -21,7 +21,7 @@ import java.util.ArrayList;
 public class ejecutar {
 
     static ArrayList<Zapatilla> Zapatillas =new  ArrayList<>();
-    static Append_To_File append_to_file = new Append_To_File();
+    static Agregar_a_Archivo_JSON agregar_a_archivo_json=new Agregar_a_Archivo_JSON();
     static Leer_archivo_JSON leer_archivo_json = new Leer_archivo_JSON();
 
     public static void main(String[] args)  {
@@ -31,8 +31,8 @@ public class ejecutar {
 
     public static void Crear_arreglo_Zapatillas()  {
         Zapatillas = leer_archivo_json.leer_archivo_json();
-        Zapatilla zapatillaNueva=append_to_file.Agregar_nueva_zapatilla_al_archivo();
-        Zapatillas.add(7,zapatillaNueva);
+        Zapatilla zapatillaNueva=agregar_a_archivo_json.Agregar_nueva_zapatilla_al_archivo("Nike","Airforce1","Black");
+        Zapatillas.add(zapatillaNueva);
     }
 
     public static void mostrar_zapatillas(){

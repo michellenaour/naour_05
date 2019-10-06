@@ -12,25 +12,30 @@ import java.io.Reader;
 import java.util.ArrayList;
 
 public class Leer_archivo_JSON {
-    static JSONParser parser = new JSONParser();
-    static ArrayList <Zapatilla>arreglo= new ArrayList<>();
+
     public ArrayList<Zapatilla> leer_archivo_json() {
-        arreglo= Crear_array_con_datos((JSONArray) Leer_JSON());
-        return arreglo;
+        JSONObject jsonObject=Json_A_JSONObject("zapatillas.json");
+        JSONArray jsonArray=JSONObject_A_JSONArray(jsonObject);
+        return Crear_array_con_datos(jsonArray);
+
     }
 
-    public  ArrayList<Zapatilla> Leer_JSON()  {
+    public JSONObject Json_A_JSONObject(String nombre_archivo){
         JSONParser parser = new JSONParser();
-        JSONArray array = new JSONArray();
+        JSONObject jsonObject = new JSONObject();
         try {
-            Reader reader = new FileReader("zapatillas.json");
-            JSONObject jsonObject = (JSONObject) parser.parse(reader);
-            array = (JSONArray) jsonObject.get("zapatillas");
+            Reader reader = new FileReader(nombre_archivo);
+            jsonObject = (JSONObject) parser.parse(reader);
         }catch (FileNotFoundException e){
             e.printStackTrace();
         }catch (IOException e){System.out.println("Error! el fichero no existe");}
         catch (ParseException p){System.out.println("Error en la sintaxis del fichero");}
-        return array;
+        return jsonObject ;
+    }
+
+    public JSONArray JSONObject_A_JSONArray(JSONObject jsonObject){
+        JSONArray jsonarray=(JSONArray) jsonObject.get("zapatillas");
+        return jsonarray;
     }
 
     public ArrayList<Zapatilla> Crear_array_con_datos(JSONArray array){
