@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Leer_archivo_JSON {
     static JSONParser parser = new JSONParser();
     static ArrayList <Zapatilla>arreglo= new ArrayList<>();
-    public ArrayList<Zapatilla> leer_archivo_json() throws IOException, ParseException {
+    public ArrayList<Zapatilla> leer_archivo_json() {
         arreglo= Crear_array_con_datos((JSONArray) Leer_JSON());
         return arreglo;
     }
@@ -28,8 +28,8 @@ public class Leer_archivo_JSON {
             array = (JSONArray) jsonObject.get("zapatillas");
         }catch (FileNotFoundException e){
             e.printStackTrace();
-        }catch (IOException e){e.printStackTrace();}
-        catch (ParseException p){p.printStackTrace();}
+        }catch (IOException e){System.out.println("Error! el fichero no existe");}
+        catch (ParseException p){System.out.println("Error en la sintaxis del fichero");}
         return array;
     }
 

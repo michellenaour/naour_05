@@ -32,7 +32,7 @@ public class Append_To_File {
         try {
             agregar_al_archivo();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Error! el fichero no existe");
         }
     }
 
